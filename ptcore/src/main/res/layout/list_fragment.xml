@@ -9,6 +9,7 @@
         android:background="@android:color/white"
         android:layout_height="match_parent">
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_marginTop="48dp"
             android:id="@+id/refreshLayout"
             android:layout_alignParentTop="true"
             android:layout_above="@+id/ic_loading"

@@ -37,7 +37,7 @@ public class BaseMainPresenter extends BasePresenter<BaseView, BaseState> {
 
         Observable<Action> action2Click = intent(BaseView::click2)
                 .map( click -> new RxStore(navigator,NavigatorView.NavigatorAction.GO_MAIN,true)
-                                .merge(reducers.add(2)));
+                                .action());
 
 
         Observable<BaseState> stateObservable =

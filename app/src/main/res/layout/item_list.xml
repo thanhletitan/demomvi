@@ -12,7 +12,7 @@
         <TextView
             android:textColor="@android:color/black"
             android:padding="10dp"
-            android:text="@{text}"
+            android:text='@{text}'
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>

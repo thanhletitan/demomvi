@@ -59,7 +59,7 @@ public class PullAndLoadMoreViewState extends BaseState {
                 + ",\n error="
                 + error
                 + ",\n data="
-                + data
+                + ((data !=null && data.data != null) ? ""+data.data.size() : data)
                 + ",\n loadingNextPage="
                 + loadingNextPage
                 + ",\n loadingPullToRefresh="
@@ -82,6 +82,8 @@ public class PullAndLoadMoreViewState extends BaseState {
             if(data!=null && data.data!=null) {
                 this.data.data = new ArrayList<>(toCopyFrom.getData().data.size());
                 this.data.data.addAll(toCopyFrom.getData().data);
+            }else {
+                this.data = toCopyFrom.data;
             }
             this.loadingFirstPage = toCopyFrom.isLoadingFirstPage();
             this.loadingNextPage = toCopyFrom.isLoadingNextPage();

@@ -19,8 +19,16 @@ public class RxStore {
         }
     }
 
+    public RxStore(){
+    }
     public Action merge(Action action){
         return action;
     }
 
+    public Action action(){
+        return new Action("Navigator");
+    }
+    public Action cancel(){
+        return new Action("Cancel");
+    }
 }

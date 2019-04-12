@@ -34,20 +34,7 @@ public class ListFragment extends PullAndLoadMoreListFragment<PullAndLoadMoreVie
 
     }
 
-    @Override
-    public Observable<Boolean> loadFirstPageIntent() {
-        return null;
-    }
 
-    @Override
-    public Observable<Boolean> loadNextPageIntent() {
-        return null;
-    }
-
-    @Override
-    public Observable<Boolean> pullToRefreshIntent() {
-        return null;
-    }
 
     @Override
     public Observable<Boolean> click() {
