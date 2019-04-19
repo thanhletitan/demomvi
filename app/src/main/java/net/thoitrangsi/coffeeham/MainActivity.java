@@ -3,15 +3,33 @@ package net.thoitrangsi.coffeeham;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.support.HasSupportFragmentInjector;
 
 import net.thoitrangsi.ptcore.BaseFragment;
+import net.thoitrangsi.ptcore.HeaderView;
 import net.thoitrangsi.ptcore.basemain.BaseMainActivity;
 import net.thoitrangsi.ptcore.BaseView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends BaseMainActivity<BaseView,MainPresenter>  {
+import javax.inject.Inject;
+
+public class MainActivity extends BaseMainActivity<BaseView,MainPresenter> implements HasSupportFragmentInjector {
+
+    @Inject
+    DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
+
+
+    @Override
+    protected HeaderView setHeader() {
+        return new HeaderView(this).Builder()
+                .setTitle("MainActivity")
+                .build();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +45,6 @@ public class MainActivity extends BaseMainActivity<BaseView,MainPresenter>  {
         return fragments;
     }
 
-    @Override
-    protected void initView() {
-
-    }
 
     @NonNull
     @Override
@@ -38,4 +52,9 @@ public class MainActivity extends BaseMainActivity<BaseView,MainPresenter>  {
         return new MainPresenter();
     }
 
+
+    @Override
+    public AndroidInjector<Fragment> supportFragmentInjector() {
+        return fragmentDispatchingAndroidInjector;
+    }
 }

@@ -33,4 +33,7 @@ ext {
     parcels = '1.1.11'
     timber = '4.6.0'
     redux = '0.14.0'
+    gson = '2.8.5'
+    retrofit = '2.5.0'
+    okhttp3 = '3.14.1'
 }

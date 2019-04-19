@@ -1,8 +1,17 @@
 package net.thoitrangsi.ptcore.baseview;
 
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import net.thoitrangsi.ptcore.R;
+import net.thoitrangsi.ptcore.databinding.ItemLoadingBottomBinding;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
 
@@ -11,9 +20,11 @@ import timber.log.Timber;
  */
 public abstract class PullAndLoadMoreAdapter<T, HD extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<HD> {
 
-    private List<T> list = new ArrayList<>();
-
-
+    protected static final int TYPE_HEADER = 2;
+    protected static final int TYPE_ITEM = 1;
+    protected static final int TYPE_FOOTER = 3;
+    protected List<T> list = new ArrayList<>();
+    protected boolean loading = false;
     public void updateList(List<T> newList) {
         this.list.clear();
         this.list.addAll(newList);
@@ -44,10 +55,18 @@ public abstract class PullAndLoadMoreAdapter<T, HD extends RecyclerView.ViewHold
         this.list.clear();
         notifyDataSetChanged();
     }
+    public void setLoading(boolean loading){
+        this.loading = loading;
+    }
     @Override
     public int getItemCount() {
-        return list.size();
+        return list.size()+1;
     }
 
-
+    @Override
+    public int getItemViewType(int position) {
+        if (position == list.size())
+            return TYPE_FOOTER;
+        return TYPE_ITEM;
+    }
 }

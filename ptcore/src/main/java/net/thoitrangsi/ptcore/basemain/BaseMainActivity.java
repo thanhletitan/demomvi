@@ -28,7 +28,7 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public abstract class BaseMainActivity<V extends BaseView, P extends BasePresenter<V, ?>> extends BaseActivity<V,P> implements NavigatorView {
+public abstract class BaseMainActivity<V extends BaseView, P extends BasePresenter<V, ?>> extends BaseActivity<V,P> {
 
 
     private ViewPager mViewPager;
@@ -70,19 +70,11 @@ public abstract class BaseMainActivity<V extends BaseView, P extends BasePresent
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(setLayoutId());
-        AndroidInjection.inject(this);
+    protected void initView() {
         setupViewPager();
-        initView();
+    }
 
-    }
-    protected int setLayoutId(){
-        return R.layout.activity_main;
-    }
     protected abstract List<BaseFragment> addListFragments();
-    protected abstract void initView();
     private void setupViewPager(){
         navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -148,8 +140,5 @@ public abstract class BaseMainActivity<V extends BaseView, P extends BasePresent
         super.onBackPressed();
     }
 
-    @Override
-    public void navigator(Object action, Object... params) {
 
-    }
 }

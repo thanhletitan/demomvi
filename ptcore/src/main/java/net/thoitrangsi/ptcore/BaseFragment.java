@@ -14,6 +14,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import dagger.android.AndroidInjection;
+import dagger.android.support.AndroidSupportInjection;
 
 /**
  * Created by thanh.le on 4/1/2019.
@@ -27,6 +29,7 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.baseActivity = (BaseActivity) activity;
+        AndroidSupportInjection.inject(this);
     }
 
     @Nullable

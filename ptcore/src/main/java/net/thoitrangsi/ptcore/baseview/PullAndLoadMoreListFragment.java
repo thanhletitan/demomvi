@@ -52,6 +52,7 @@ abstract public class PullAndLoadMoreListFragment<V extends PullAndLoadMoreView,
 
         }
         binding.refreshLayout.setRefreshing(viewState.isLoadingPullToRefresh());
+        adapter.setLoading(viewState.isLoadingNextPage());
     }
     @Override
     public Observable<Boolean> loadFirstPageIntent() {

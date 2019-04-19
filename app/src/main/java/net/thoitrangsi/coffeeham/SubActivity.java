@@ -3,6 +3,7 @@ package net.thoitrangsi.coffeeham;
 import android.os.Bundle;
 
 import net.thoitrangsi.ptcore.BaseFragment;
+import net.thoitrangsi.ptcore.HeaderView;
 import net.thoitrangsi.ptcore.basemain.BaseMainActivity;
 import net.thoitrangsi.ptcore.BaseView;
 
@@ -19,6 +20,11 @@ public class SubActivity extends BaseMainActivity<BaseView,MainPresenter>{
     @Override
     public MainPresenter createPresenter() {
         return new MainPresenter();
+    }
+
+    @Override
+    protected HeaderView setHeader() {
+        return null;
     }
 
     @Override

@@ -6,6 +6,7 @@ import android.content.Context;
 
 import net.thoitrangsi.coffeeham.di.AppModule;
 import net.thoitrangsi.coffeeham.di.DaggerAppComponent;
+import net.thoitrangsi.coffeeham.di.NetworkModule;
 
 import javax.inject.Inject;
 
@@ -40,6 +41,7 @@ public class BaseApplication extends Application implements HasActivityInjector 
                 .builder()
                 .application(this)
                 .appModule(new AppModule(this))
+                .networkModule(new NetworkModule(""))
                 .build()
                 .inject(this);
 

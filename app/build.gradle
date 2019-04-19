@@ -54,4 +54,10 @@ dependencies {
     annotationProcessor "com.google.auto.value:auto-value:$autoValueVersion"
     implementation "com.yheriatovych:reductor:$redux"
     annotationProcessor     "com.yheriatovych:reductor-processor:$redux"
+    implementation "com.google.code.gson:gson:$gson"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava:$retrofit"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp3"
 }
